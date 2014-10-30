@@ -7,7 +7,7 @@ $(document).ready(function() {
 
     $(this).countdown({
       until: endTime,
-      compact: true,
+      compact: false,
       layout: timeLayout
     });
   });
