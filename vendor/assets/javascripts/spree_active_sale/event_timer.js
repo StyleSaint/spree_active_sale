@@ -8,7 +8,11 @@ $(document).ready(function() {
     $(this).countdown({
       until: endTime,
       compact: false,
-      layout: timeLayout
+      layout: timeLayout,
+      labels0: ['Year', 'Month', 'Week', 'Day', 'Hour', 'Minute', 'Second'],
+      onExpiry: function() {
+        window.location.reload();
+      }
     });
   });
 });
