@@ -11,7 +11,7 @@ $(document).ready(function() {
       layout: timeLayout,
       labels0: ['Year', 'Month', 'Week', 'Day', 'Hour', 'Minute', 'Second'],
       onExpiry: function() {
-        window.location.reload();
+        setTimeout("window.location.reload()",2000);
       }
     });
   });
