@@ -8,6 +8,7 @@
         <%= f.label :product_name, t('spree.active_sale.event.active_record.product_name', :default => :product_name) %>
         <p class='hint'><%= t('spree.active_sale.event.product_name_hint') %></p>
         <%= f.text_field :product_id, :class => 'autocomplete fullwidth', :data => { :auto_complete_url => search_admin_active_sales_url } %>
+        <%= f.hidden_field :option_value_id %>
         <%= f.error_message_on :active_sale_event_id %>
       <% end %>
 
