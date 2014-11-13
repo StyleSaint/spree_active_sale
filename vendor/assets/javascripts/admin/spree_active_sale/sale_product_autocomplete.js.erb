@@ -30,10 +30,13 @@ $(document).ready(function() {
         }
       },
       formatResult: function(product) {
-        return product.name
+        return product.name + ' -- ' + product.color
       },
       formatSelection: function(product) {
-        return product.name
+        if ($("#sale_product_option_value_id").length > 0) {
+          $("#sale_product_option_value_id").val(product.option_value_id);
+        }
+        return product.name + ' -- ' + product.color
       }
     })
   }

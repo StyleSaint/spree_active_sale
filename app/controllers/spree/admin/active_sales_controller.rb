@@ -26,7 +26,15 @@ module Spree
       end
 
       def search
-        params[:q].blank? ? [] : @products = Spree::Product.limit(20).search(:name_cont => params[:q]).result
+        # params[:q].blank? ? [] : @products = Spree::Product.limit(20).search(:name_cont => params[:q]).result
+        params[:q].blank? ? [] : @products = Spree::Product.limit(20)
+        .joins(variants: :option_values)
+        .joins('INNER JOIN `spree_option_types` ON `spree_option_types`.`id` = `spree_option_values`.`option_type_id`')
+        .where('`spree_option_types`.`name`= ?','color')
+        .group('`spree_option_values`.`id`')
+        .select('`spree_products`.*, `spree_option_values`.`id` as `option_value_id`, `spree_option_values`.`presentation` as `color`')
+        .search(:name_cont => params[:q])
+        .result
       end
 
       private
