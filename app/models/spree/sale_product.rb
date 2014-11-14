@@ -11,6 +11,13 @@ module Spree
     validates :active_sale_event_id, :product_id, :presence => true
     validates :active_sale_event_id, :uniqueness => { :scope => [:product_id, :option_value_id], :message => I18n.t('spree.active_sale.event.sale_product.already_exists') }
 
+    scope :active_option_products, lambda { |classification|
+      where(
+          :product_id=>classification.product_id,
+          :option_value_id=>classification.option_value_id
+      )
+    }
+
     def product_name
       product.try(:name)
     end

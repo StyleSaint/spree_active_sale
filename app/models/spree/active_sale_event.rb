@@ -85,6 +85,11 @@ module Spree
       self.start_and_dates_available? && (self.start_date >= self.end_date)
     end
 
+    def check_valid?(classification)
+      return true unless classification.option_value_id
+      self.sale_products.active_option_products(classification).present?
+    end
+
     private
 
       # check if there is start and end dates are correct
