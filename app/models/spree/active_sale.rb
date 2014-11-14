@@ -13,6 +13,8 @@ module Spree
 
     default_scope :order => "#{self.table_name}.position"
 
+    scope :active, where(:deleted_at => nil)
+
     make_permalink :order => :name
 
     accepts_nested_attributes_for :active_sale_events, :allow_destroy => true, :reject_if => lambda { |attrs| attrs.all? { |k, v| v.blank? } }
