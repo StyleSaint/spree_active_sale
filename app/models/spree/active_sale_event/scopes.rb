@@ -193,6 +193,10 @@ module Spree
       where("start_date < :start_date", { :start_date => zone_time })
     end
 
+    add_search_scope :without_past_events do |*args|
+      where("end_date > :end_date", { :end_date => zone_time })
+    end
+
     add_search_scope :starting_today do |*args|
       where(:start_date => zone_day_duration)
     end

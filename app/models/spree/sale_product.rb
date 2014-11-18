@@ -22,6 +22,10 @@ module Spree
       joins(:active_sale_event).merge(Spree::ActiveSaleEvent.available)
     }
 
+    scope :without_past_products, lambda {
+      joins(:active_sale_event).merge(Spree::ActiveSaleEvent.not_deleted.without_past_events)
+    }
+
     def product_name
       product.try(:name)
     end
