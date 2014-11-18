@@ -87,7 +87,7 @@ module Spree
 
     def check_valid?(classification)
       return true unless classification.option_value_id
-      self.sale_products.active_option_products(classification).present?
+      self.sale_products.active_option_products(classification.product_id, classification.option_value_id).present?
     end
 
     private
