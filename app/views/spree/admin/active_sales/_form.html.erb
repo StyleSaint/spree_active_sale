@@ -41,7 +41,7 @@
     <h4><%= t('spree.active_sale.event.create_if_no_record') %></h4>
     <%= render :partial => "spree/admin/active_sale_events/form", :locals => { :events => @active_sale_event } %>
   <% else %>
-    <% @active_sale_events = @active_sale.active_sale_events %>
+    <% @active_sale_events = @active_sale.active_sale_events.descend_by_start_date %>
     <%= render :partial => "spree/admin/shared/list_events", :locals => { :events => @active_sale_events } %>
   <% end %>
 <% end %>
